@@ -10,6 +10,11 @@ export class AnimesController {
   async query(@Param('cat') cat): Promise <any> {
     return this.animeService.query(cat);
   }
+
+  @Get("animes/categories")
+  getCategories() : Promise<String[]> {
+    return this.animeService.getAnimesCategories();
+  }
   
   @Post()
   async create(@Body() anime: Anime): Promise <Anime[]> {

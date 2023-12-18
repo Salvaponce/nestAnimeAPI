@@ -27,6 +27,10 @@ export class AnimesService {
     return this.animeRepository.find();
   }
 
+  async getAnimesCategories(): Promise<String[]> {
+    return this.animeRepository.query("SELECT DISTINCT unnest(Categories) AS distinct_string FROM animes");
+  }
+
   async query(cat: string): Promise<any> {
     return await this.animeRepository.find({where: {categories: cat}});
   }
